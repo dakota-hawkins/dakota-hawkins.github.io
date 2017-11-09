@@ -36,13 +36,6 @@
                 </a>
               </li>
             
-              <li class="post-link">
-                <a class="post-title" href="/posts/2013/12/09/example-post.html">
-                  <span class="post-date">09 Dec 2013</span>
-                  Example post
-                </a>
-              </li>
-            
           </ul>
         </div>
         <div class="footer">
@@ -84,7 +77,22 @@
 <p><img src="/images/3d_example.png" alt="Projected Embryo">
 <em>Projected Embryo</em></p>
 
-<p>For this project, each embryo has 27 image slices that comprise all cross sections. </p>
+<p>To recognize cells in two-dimensional images, I will first create a labelled dataset of subimages containing PMCs and non-PMC samples. Subimages will be extracted and logged into a database using an in-house labeller I have recently developed, as shown below. For this project, each embryo has 27 image slices that comprise all cross sections. 375 seperate cells, across 7 embryos, have previously been identified and their centers extracted. These cells will form the basis of our dataset.</p>
+
+<p><img src="/images/cell_labeller_example.png" alt="Cell Labeller">
+<em>Cell Labeller</em></p>
+
+<h3>Centroid Extraction</h3>
+
+<p>Three dimensional centroids -- <em>(x, y, z)</em> --  of cells will be extracted by first identifying cells in each two-dimensional slice, recording the diameter of each recognized cell, and tracking each recognized cell up <em>z</em>-stacks. Because PMCs are roughly spherical, finding local maxima for tracked radii along the z-axis should provide an accurate estimate for z-centers. Finding <em>xy</em> centers will then be trivial. </p>
+
+<p>Once a labelled dataset has been constructed, the labelled images and image features will be run through a support vector machine to identify cells. Because we&#39;ve constructed a binary classifier, calculating the area under the ROC curve will be used to measure classifier performance.</p>
+
+<p>Once centroids for each identified cell have been identified, per previous description, centroid accuracy will be assessed by calculating the sum of square errors for predicted centers.</p>
+
+<h3>Previous Work</h3>
+
+<p>Previous work in the Bradham lab as been conducted on this project before. Most efforts looked to identify cells using traditional morphological analysis, such as watershed analysis, and circle detection. Unfortunately, these methods did not perform well enough to rely on for unlabelled datasets. The use of machine learning techniques will hopefully boost performance to an acceptable level.</p>
 
   </div>
   <div class="colophon">
