@@ -2,7 +2,7 @@
 author: Dakota Hawkins
 layout: post
 title: CV Project Presentation
-cover: cover.jpg
+cover: solve_smol.png
 date: 2017-12-12 15:52:00
 categories: posts
 ---
